@@ -16,6 +16,10 @@ socket.on('connect',() => {
 
 })
 
+socket.on('enviar-mensaje', (payload) => {
+    console.log(payload)
+
+} )
 
 socket.on('disconnect',() => {
     console.log('Desconectado')
@@ -32,5 +36,7 @@ btnEnviar.addEventListener('click',() => {
         id: '123ABC',
         fecha: new Date().getTime()
     }
-    socket.emit('enviar-mensaje', payload);
+    socket.emit('enviar-mensaje', payload, (id) =>{
+        console.log(id)
+    });
 })
